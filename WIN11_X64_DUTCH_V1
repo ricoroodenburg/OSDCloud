@@ -1,6 +1,10 @@
+$DebugPreference = "Continue"
+
 Start-Transcript -Path "X:\OSDCloud\Debug.log" -Force
+Write-Debug "Start Start-OSDCloud script"
 
 # Variables
+Write-Debug "Set Variables"
 $OSName = 'Windows 11 24H2 x64'
 $OSEdition = 'Enterprise'
 $OSActivation = 'Volume'
@@ -21,14 +25,17 @@ $Global:MyOSDCloud = [ordered]@{
     CheckSHA1 = [bool]$true
 }
 
+Write-Debug $($Global:MyOSDCloud | ConvertTo-Json)
 
 
 Try {
 
+    Write-Debug "Start Deployment"
     Start-OSDCloud -OSName $OSName -OSEdition $OSEdition -OSActivation $OSActivation -OSLanguage $OSLanguage -Manufacturer (Get-MyComputerManufacturer -Brief) -Product (Get-MyComputerProduct)
 
 } Catch {
 
+    Write-Debug "An error occured: $($_)"
     Throw $_
     
 }
