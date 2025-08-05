@@ -12,12 +12,12 @@ $OSLanguage = 'nl-NL'
 
 #Set OSDCloud Vars
 $Global:MyOSDCloud = [ordered]@{
-    Restart = [bool]$false
+    Restart = [bool]$true
     RecoveryPartition = [bool]$true
     OEMActivation = [bool]$false
-    WindowsUpdate = [bool]$true
-    WindowsUpdateDrivers = [bool]$true
-    WindowsDefenderUpdate = [bool]$true
+    WindowsUpdate = [bool]$true          # Install Windows Updates after installing Windows
+    WindowsUpdateDrivers = [bool]$true   # Update drivers during Windows Updates after installing Windows
+    WindowsDefenderUpdate = [bool]$true  # Update Defender during Windows Updates after installing Windows
     SetTimeZone = [bool]$true
     ClearDiskConfirm = [bool]$False
     ShutdownSetupComplete = [bool]$false
