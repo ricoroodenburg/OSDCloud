@@ -5,6 +5,7 @@ Write-Debug "Start Start-OSDCloud script"
 
 # Variables
 Write-Debug "Set Variables"
+$OSImageIndex = 3                         # Windows 11 Enterprise
 $Global:MyOSDCloud = [ordered]@{
     Restart = [bool]$true
     RecoveryPartition = [bool]$true
@@ -25,7 +26,7 @@ Write-Debug $($Global:MyOSDCloud | ConvertTo-Json)
 Try {
 
     Write-Debug "Start Deployment"
-    Start-OSDCloud -FindImageFile -OSImageIndex 0 -Manufacturer (Get-MyComputerManufacturer -Brief) -Product (Get-MyComputerProduct)
+    Start-OSDCloud -FindImageFile -OSImageIndex $OSImageIndex -Manufacturer (Get-MyComputerManufacturer -Brief) -Product (Get-MyComputerProduct)
 
 } Catch {
 
