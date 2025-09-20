@@ -25,7 +25,7 @@ Write-Debug $($Global:MyOSDCloud | ConvertTo-Json)
 Try {
 
     Write-Debug "Start Deployment"
-    Start-OSDCloud -FindImageFile -Manufacturer (Get-MyComputerManufacturer -Brief) -Product (Get-MyComputerProduct)
+    Start-OSDCloud -FindImageFile -OSImageIndex 1 -Manufacturer (Get-MyComputerManufacturer -Brief) -Product (Get-MyComputerProduct)
 
 } Catch {
 
