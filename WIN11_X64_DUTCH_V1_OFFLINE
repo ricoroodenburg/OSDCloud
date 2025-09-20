@@ -5,7 +5,6 @@ Write-Debug "Start Start-OSDCloud script"
 
 # Variables
 Write-Debug "Set Variables"
-$OSImageIndex = 3                         # Windows 11 Enterprise
 $Global:MyOSDCloud = [ordered]@{
     Restart = [bool]$true
     RecoveryPartition = [bool]$true
@@ -18,6 +17,8 @@ $Global:MyOSDCloud = [ordered]@{
     ShutdownSetupComplete = [bool]$false
     SyncMSUpCatDriverUSB = [bool]$true
     CheckSHA1 = [bool]$true
+    OSName = "install.wim"
+    OSImageIndex = 3
 }
 
 Write-Debug $($Global:MyOSDCloud | ConvertTo-Json)
@@ -26,7 +27,7 @@ Write-Debug $($Global:MyOSDCloud | ConvertTo-Json)
 Try {
 
     Write-Debug "Start Deployment"
-    Start-OSDCloud -FindImageFile -OSImageIndex $OSImageIndex -Manufacturer (Get-MyComputerManufacturer -Brief) -Product (Get-MyComputerProduct)
+    Start-OSDCloud -FindImageFile -Manufacturer (Get-MyComputerManufacturer -Brief) -Product (Get-MyComputerProduct)
 
 } Catch {
 
